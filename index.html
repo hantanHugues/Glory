@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyeux Anniversaire Glorie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background: #fdfaf4;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .page {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    padding: 70px 64px 90px;
+    overflow: hidden;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.18; }
+    50%       { opacity: 0.38; }
+  }
+
+  /* Déco lumineuse coin haut droit */
+  .sun-deco {
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(255,220,110,0.35), transparent 68%);
+    animation: shimmer 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .sun-ring {
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,160,60,0.2);
+    animation: shimmer 7s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
+
+  /* Déco bas gauche */
+  .glow-bottom {
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,220,110,0.12), transparent 68%);
+    pointer-events: none;
+  }
+
+  /* Particules */
+  .particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatUp {
+    0%   { opacity: 0; transform: translateY(0); }
+    10%  { opacity: 0.65; }
+    90%  { opacity: 0.2; }
+    100% { opacity: 0; transform: translateY(-100vh); }
+  }
+
+  /* En-tête */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.1s;
+  }
+
+  .label-top {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: rgba(140,95,30,0.7);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .main-name {
+    font-size: 78px;
+    font-weight: 300;
+    color: #3d2910;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-style: italic;
+  }
+
+  .gold-bar {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(180,135,40,0.55), transparent);
+    margin: 20px auto 0;
+  }
+
+  /* Sections de texte */
+  .section {
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    margin-bottom: 32px;
+  }
+  .section:nth-child(1) { animation-delay: 0.35s; }
+  .section:nth-child(2) { animation-delay: 0.55s; }
+  .section:nth-child(3) { animation-delay: 0.75s; }
+  .section:nth-child(4) { animation-delay: 0.95s; }
+  .section:nth-child(5) { animation-delay: 1.15s; }
+
+  .section p {
+    font-size: 20px;
+    line-height: 1.85;
+    color: #3a2610;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .section p em {
+    color: #7a4e18;
+    font-style: italic;
+  }
+
+  /* Séparateur */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 28px 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+  .sep:nth-child(1) { animation-delay: 0.45s; }
+  .sep:nth-child(2) { animation-delay: 0.65s; }
+  .sep:nth-child(3) { animation-delay: 0.85s; }
+
+  .sep-line {
+    flex: 1;
+    height: 0.5px;
+    background: rgba(180,135,40,0.28);
+  }
+  .sep-dot {
+    font-size: 13px;
+    color: rgba(180,135,40,0.55);
+  }
+
+  /* Vœux finaux */
+  .final {
+    text-align: center;
+    padding: 36px 10px 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.35s;
+  }
+
+  .final-text {
+    font-size: 21px;
+    line-height: 1.9;
+    color: #3a2610;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .final-text em { color: #7a4e18; font-style: italic; }
+  .final-text strong { font-weight: 400; color: #5a3515; }
+
+  .sign {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(130,90,25,0.8);
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .sign-sub {
+    font-size: 15px;
+    color: rgba(140,95,35,0.6);
+    font-style: italic;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div id="ptcl" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></div>
+
+<div class="page">
+  <div class="sun-deco"></div>
+  <div class="sun-ring"></div>
+  <div class="glow-bottom"></div>
+
+  <!-- En-tête -->
+  <div class="header">
+    <div class="label-top">✦ &nbsp; Joyeux anniversaire &nbsp; ✦</div>
+    <div class="main-name">Glorie</div>
+    <div class="gold-bar"></div>
+  </div>
+
+  <!-- Texte, fidèle à l'original, juste poli -->
+  <div class="content">
+
+    <div class="section">
+      <p>
+        On ne s'est pas beaucoup côtoyés,<br>
+        mais à chacune de nos rencontres,<br>
+        <em>ton sourire me fondait le cœur.</em>
+      </p>
+    </div>
+
+    <div class="sep">
+      <div class="sep-line"></div><div class="sep-dot">✦</div><div class="sep-line"></div>
+    </div>
+
+    <div class="section">
+      <p>
+        Tu es belle, cela ne fait aucun doute.<br>
+        Ta voix est apaisante,<br>
+        et ton charme ne cesse de grandir<br>
+        <em>à chacune de nos rencontres.</em>
+      </p>
+    </div>
+
+    <div class="sep">
+      <div class="sep-line"></div><div class="sep-dot">✦</div><div class="sep-line"></div>
+    </div>
+
+    <div class="section">
+      <p>
+        Tu es une personne que j'ai toujours voulu découvrir —<br>
+        merveilleuse, aimable, et très attirante.<br>
+        Tout comme les rayons du soleil,<br>
+        <em>tu sais aveugler une simple âme mortelle</em><br>
+        avec ton sourire angélique,<br>
+        venu droit du paradis.
+      </p>
+    </div>
+
+    <div class="sep">
+      <div class="sep-line"></div><div class="sep-dot">✦</div><div class="sep-line"></div>
+    </div>
+
+    <div class="final">
+      <div class="gold-bar" style="margin-bottom: 32px;"></div>
+
+      <div class="final-text">
+        Je te souhaite de continuer à bénir et à éclairer<br>
+        notre monde avec ce sourire capable de charmer<br>
+        <em>le bonheur pour l'attirer à toi.</em><br><br>
+        Je te souhaite la santé, pour que tu continues<br>
+        à briller — à la hauteur du petit soleil,<br>
+        de la petite étoile que tu es<br>
+        <strong>pour ton entourage.</strong><br><br>
+        Que tes vœux les plus chers se réalisent,<br>
+        et n'oublie jamais<br>
+        <em>à quel point ton éclat brille sur ceux qui t'entourent.</em>
+      </div>
+
+      <div class="gold-bar" style="margin-bottom: 28px;"></div>
+      <div class="sign">Joyeux Anniversaire, Glorie</div>
+      <div class="sign-sub">avec sincérité</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const c = document.getElementById('ptcl');
+const cols = ['rgba(255,210,70,0.5)','rgba(255,230,130,0.45)','rgba(240,190,60,0.4)'];
+function mk() {
+  const el = document.createElement('div');
+  el.className = 'particle';
+  const s = Math.random()*3.5+1.2;
+  const dur = Math.random()*14+9;
+  const del = Math.random()*6;
+  el.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:-8px;background:${cols[Math.floor(Math.random()*3)]};animation-duration:${dur}s;animation-delay:${del}s;`;
+  c.appendChild(el);
+  setTimeout(()=>el.remove(),(dur+del)*1000);
+}
+for(let i=0;i<18;i++) mk();
+setInterval(mk, 900);
+</script>
+</body>
+</html>
