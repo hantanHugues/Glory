@@ -31,12 +31,7 @@
     }
     .main-name { font-size: 52px !important; }
     .label-top { font-size: 7.5px !important; letter-spacing: 4px !important; }
-    .section:nth-child(1) { animation-delay: 1.5s; }
-    .sep:nth-child(2) { animation-delay: 3s; }
-    .section:nth-child(3) { animation-delay: 4.5s; }
-    .sep:nth-child(4) { animation-delay: 6s; }
-    .section:nth-child(5) { animation-delay: 7.5s; }
-    .sep:nth-child(6) { animation-delay: 9s; }
+    
     .section p { font-size: 17px !important; }
     .final-text { font-size: 18px !important; }
     .sun-deco { width: 180px; height: 180px; top: -30px; right: -30px; }
@@ -138,11 +133,6 @@
     animation: fadeUp 1.5s ease forwards;
     margin-bottom: 32px;
   }
-  .section:nth-child(1) { animation-delay: 0.35s; }
-  .section:nth-child(2) { animation-delay: 0.55s; }
-  .section:nth-child(3) { animation-delay: 0.75s; }
-  .section:nth-child(4) { animation-delay: 0.95s; }
-  .section:nth-child(5) { animation-delay: 1.15s; }
 
   .section p {
     font-size: 20px;
@@ -166,9 +156,6 @@
     opacity: 0;
     animation: fadeUp 1.5s ease forwards;
   }
-  .sep:nth-child(1) { animation-delay: 0.45s; }
-  .sep:nth-child(2) { animation-delay: 0.65s; }
-  .sep:nth-child(3) { animation-delay: 0.85s; }
 
   .sep-line {
     flex: 1;
@@ -180,12 +167,14 @@
     color: rgba(180,135,40,0.55);
   }
 
-  .content > .section:nth-of-type(1) { animation-delay: 2s; }
-  .content > .sep:nth-of-type(1) { animation-delay: 4.5s; }
-  .content > .section:nth-of-type(2) { animation-delay: 6s; }
-  .content > .sep:nth-of-type(2) { animation-delay: 8.5s; }
-  .content > .section:nth-of-type(3) { animation-delay: 10s; }
-  .content > .sep:nth-of-type(3) { animation-delay: 12.5s; }
+  /* Séquence d'apparition fluide et rapide */
+  .content > div:nth-child(1) { animation-delay: 0.8s; } /* 1ère section */
+  .content > div:nth-child(2) { animation-delay: 1.2s; } /* Séparateur */
+  .content > div:nth-child(3) { animation-delay: 1.6s; } /* 2ème section */
+  .content > div:nth-child(4) { animation-delay: 2.0s; } /* Séparateur */
+  .content > div:nth-child(5) { animation-delay: 2.4s; } /* 3ème section */
+  .content > div:nth-child(6) { animation-delay: 2.8s; } /* Séparateur */
+  .content > div:nth-child(7) { animation-delay: 3.2s; } /* Final */
 
   /* Vœux finaux */
   .final {
@@ -193,7 +182,6 @@
     padding: 36px 10px 0;
     opacity: 0;
     animation: fadeUp 1.5s ease forwards;
-    animation-delay: 10.5s;
   }
 
   .final-text {
